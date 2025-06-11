@@ -3,21 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thai TV Player - Enhanced</title>
+  <title>HS8TV Player - Enhanced</title>
   <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
   <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary-color: #ff8a00;
+      --secondary-color: #da1b60;
+      --background-gradient: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+      --card-bg: rgba(0, 0, 0, 0.3);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-color: white;
+    }
+    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
     }
     
     body {
-      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
-      color: white;
+      background: var(--background-gradient);
+      color: var(--text-color);
       min-height: 100vh;
       padding: 20px;
     }
@@ -35,14 +45,15 @@
       background: rgba(0, 0, 0, 0.3);
       border-radius: 15px;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--card-border);
+      position: relative;
     }
     
     h1 {
       font-size: 2.8rem;
       margin-bottom: 10px;
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-      background: linear-gradient(to right, #ff8a00, #da1b60);
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -63,21 +74,21 @@
     .player-section {
       flex: 3;
       min-width: 300px;
-      background: rgba(0, 0, 0, 0.3);
+      background: var(--card-bg);
       border-radius: 15px;
       padding: 20px;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--card-border);
     }
     
     .controls-section {
       flex: 1;
       min-width: 250px;
-      background: rgba(0, 0, 0, 0.3);
+      background: var(--card-bg);
       border-radius: 15px;
       padding: 20px;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--card-border);
     }
     
     .channel-list {
@@ -94,7 +105,7 @@
       padding: 12px 15px;
       margin-bottom: 10px;
       background: rgba(255, 255, 255, 0.1);
-      color: white;
+      color: var(--text-color);
       border: none;
       border-radius: 8px;
       text-align: left;
@@ -109,13 +120,13 @@
     }
     
     .channel-btn.active {
-      background: linear-gradient(to right, #ff8a00, #da1b60);
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
       font-weight: bold;
     }
     
     .channel-btn i {
       margin-right: 10px;
-      color: #ff8a00;
+      color: var(--primary-color);
     }
     
     .channel-btn.active i {
@@ -127,7 +138,7 @@
       margin-bottom: 15px;
       padding-bottom: 10px;
       border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-      color: #ff8a00;
+      color: var(--primary-color);
     }
     
     .player-container {
@@ -155,7 +166,7 @@
     .player-overlay h2 {
       font-size: 2rem;
       margin-bottom: 20px;
-      color: #ff8a00;
+      color: var(--primary-color);
     }
     
     .player-overlay p {
@@ -175,7 +186,7 @@
       flex: 1;
       padding: 12px;
       background: rgba(255, 255, 255, 0.1);
-      color: white;
+      color: var(--text-color);
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -192,7 +203,7 @@
     }
     
     .control-btn.primary {
-      background: linear-gradient(to right, #ff8a00, #da1b60);
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
     }
     
     .control-btn.primary:hover {
@@ -218,15 +229,15 @@
     .info-card {
       flex: 1;
       min-width: 250px;
-      background: rgba(0, 0, 0, 0.3);
+      background: var(--card-bg);
       border-radius: 15px;
       padding: 20px;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--card-border);
     }
     
     .info-card h3 {
-      color: #ff8a00;
+      color: var(--primary-color);
       margin-bottom: 15px;
       font-size: 1.3rem;
     }
@@ -301,7 +312,7 @@
     .logo {
       font-size: 2.5rem;
       margin-bottom: 10px;
-      color: #ff8a00;
+      color: var(--primary-color);
     }
     
     .current-channel {
@@ -316,23 +327,307 @@
     
     .current-channel i {
       font-size: 2rem;
-      color: #ff8a00;
+      color: var(--primary-color);
     }
     
     .channel-name {
       font-size: 1.3rem;
       font-weight: bold;
     }
+    
+    /* New styles for M3U import feature */
+    .import-section {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid var(--card-border);
+    }
+    
+    .import-btn {
+      display: block;
+      width: 100%;
+      padding: 12px 15px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-color);
+      border: none;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    
+    .import-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .import-btn i {
+      margin-right: 10px;
+      color: #4CAF50;
+    }
+    
+    .m3u-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .m3u-modal-content {
+      background: var(--card-bg);
+      width: 90%;
+      max-width: 500px;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      position: relative;
+      border: 1px solid var(--card-border);
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .close-modal:hover {
+      transform: rotate(90deg);
+      color: #ff0000;
+    }
+    
+    .modal-title {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+      text-align: center;
+    }
+    
+    .file-upload-area {
+      border: 2px dashed rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      padding: 40px 20px;
+      text-align: center;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.2);
+    }
+    
+    .file-upload-area:hover {
+      border-color: var(--primary-color);
+      background: rgba(0, 0, 0, 0.3);
+    }
+    
+    .file-upload-area i {
+      font-size: 3rem;
+      color: #4CAF50;
+      margin-bottom: 15px;
+    }
+    
+    .file-upload-area p {
+      margin-bottom: 5px;
+    }
+    
+    .file-input {
+      display: none;
+    }
+    
+    .file-name {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      word-break: break-all;
+    }
+    
+    .import-actions {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .action-btn {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .import-action {
+      background: linear-gradient(to right, #4CAF50, #2E7D32);
+      color: white;
+    }
+    
+    .cancel-action {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-color);
+    }
+    
+    .action-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+    
+    .imported-channels-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 15px 0 10px;
+    }
+    
+    .clear-imported-btn {
+      background: rgba(255, 0, 0, 0.2);
+      color: #ff6b6b;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.8rem;
+    }
+    
+    .clear-imported-btn:hover {
+      background: rgba(255, 0, 0, 0.3);
+    }
+    
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 15px 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .toast.show {
+      opacity: 1;
+    }
+    
+    .toast.success {
+      border-left: 4px solid #4CAF50;
+    }
+    
+    .toast.error {
+      border-left: 4px solid #f44336;
+    }
+    
+    .url-input-container {
+      margin-top: 20px;
+    }
+    
+    .url-input {
+      width: 100%;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      color: var(--text-color);
+      font-size: 1rem;
+      margin-top: 5px;
+    }
+    
+    .url-input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .import-type-toggle {
+      display: flex;
+      margin-bottom: 15px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .toggle-btn {
+      flex: 1;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .toggle-btn.active {
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    }
+    
+    .theme-selector {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px;
+      border-radius: 8px;
+    }
+    
+    .theme-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid white;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    
+    .theme-btn:hover {
+      transform: scale(1.2);
+    }
+    
+    .theme-btn.active {
+      transform: scale(1.2);
+      box-shadow: 0 0 0 3px white;
+    }
+    
+    /* Theme colors */
+    .theme-default { background: linear-gradient(45deg, #ff8a00, #da1b60); }
+    .theme-ocean { background: linear-gradient(45deg, #00c3ff, #0077ff); }
+    .theme-forest { background: linear-gradient(45deg, #00b09b, #96c93d); }
+    .theme-sunset { background: linear-gradient(45deg, #ff7e5f, #feb47b); }
+    .theme-purple { background: linear-gradient(45deg, #8E2DE2, #4A00E0); }
+    .theme-gold { background: linear-gradient(45deg, #FFD700, #FFA500); }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
+      <div class="theme-selector">
+        <div class="theme-btn theme-default active" data-theme="default"></div>
+        <div class="theme-btn theme-ocean" data-theme="ocean"></div>
+        <div class="theme-btn theme-forest" data-theme="forest"></div>
+        <div class="theme-btn theme-sunset" data-theme="sunset"></div>
+        <div class="theme-btn theme-purple" data-theme="purple"></div>
+        <div class="theme-btn theme-gold" data-theme="gold"></div>
+      </div>
+      
       <div class="logo">
         <i class="fas fa-satellite"></i>
       </div>
       <h1>HS8TV Player</h1>
-      <p class="subtitle">Watch popular internet TV </p>
+      <p class="subtitle">Watch popular internet TV + M3U Importer</p>
     </header>
     
     <div class="main-content">
@@ -383,26 +678,40 @@
       
       <div class="controls-section">
         <h2 class="section-title"><i class="fas fa-list"></i> Channels</h2>
+        
+        <!-- M3U Import Section -->
+        <div class="import-section">
+          <button class="import-btn" id="importM3UBtn">
+            <i class="fas fa-file-import"></i> Import M3U Playlist
+          </button>
+          <div class="imported-channels-header">
+            <span>Imported Channels:</span>
+            <button class="clear-imported-btn" id="clearImportedBtn">
+              <i class="fas fa-trash-alt"></i> Clear
+            </button>
+          </div>
+        </div>
+        
         <div class="channel-list">
-        <button class="channel-btn" data-name="Sky News Weather" data-url="https://distro001-gb-hls1-prd.delivery.skycdp.com/easel_cdn/ngrp:weather_loop.stream_all/playlist.m3u8">
+          <button class="channel-btn" data-name="Sky News Weather" data-url="https://distro001-gb-hls1-prd.delivery.skycdp.com/easel_cdn/ngrp:weather_loop.stream_all/playlist.m3u8">
             <i class="fas fa-tv"></i> Sky News Weather
           </button>
-         <button class="channel-btn" data-name="Weatherspy" data-url="https://jukin-weatherspy-2-in.samsung.wurl.tv/playlist.m3u8">
+          <button class="channel-btn" data-name="Weatherspy" data-url="https://jukin-weatherspy-2-in.samsung.wurl.tv/playlist.m3u8">
             <i class="fas fa-tv"></i> Weatherspy
           </button>
           <button class="channel-btn" data-name="Channel 3" data-url="https://lb1-live-mv.v2h-cdn.com/hls/ffae/3hd/3hd.m3u8">
             <i class="fas fa-tv"></i> Channel 3
           </button>
-         <button class="channel-btn" data-name="Channel 5" data-url="https://lb1-live-mv.v2h-cdn.com/hls/fffb/5hd/5hd.m3u8">            
-           <i class="fas fa-tv"></i> Channel 5
+          <button class="channel-btn" data-name="Channel 5" data-url="https://lb1-live-mv.v2h-cdn.com/hls/fffb/5hd/5hd.m3u8">            
+            <i class="fas fa-tv"></i> Channel 5
           </button>
           <button class="channel-btn" data-name="Channel 7 " data-url="https://lb1-live-mv.v2h-cdn.com/hls/ffac/7hd/7hd.m3u8">
             <i class="fas fa-tv"></i> Channel 7 
           </button>
-         <button class="channel-btn" data-name="Channel 9 " data-url="https://lb1-live-mv.v2h-cdn.com/hls/ffbb/mcot/mcot.m3u8">
+          <button class="channel-btn" data-name="Channel 9 " data-url="https://lb1-live-mv.v2h-cdn.com/hls/ffbb/mcot/mcot.m3u8">
             <i class="fas fa-tv"></i> Channel 9
           </button>
-         <button class="channel-btn" data-name="Channel 11 " data-url="https://cdn-edge-ott.prd.go.th/live_vlc/smil:01f1-8b4b-971e-aa35-d5fa.smil/playlist.m3u8">
+          <button class="channel-btn" data-name="Channel 11 " data-url="https://cdn-edge-ott.prd.go.th/live_vlc/smil:01f1-8b4b-971e-aa35-d5fa.smil/playlist.m3u8">
             <i class="fas fa-tv"></i> Channel 11
           </button>
           <button class="channel-btn" data-name="Thai PBS" data-url="https://lb1-live-mv.v2h-cdn.com/hls/fffd/tpbs/tpbs.m3u8">
@@ -435,11 +744,63 @@
           <button class="channel-btn" data-name="ท่าน้ำนนท์" data-url="https://stream.firsttech.co.th/live/nakornnont.stream/playlist.m3u8">
             <i class="fas fa-vial"></i>ท่าน้ำนนท์
           </button>
+          <button class="channel-btn" data-name="โต้รุ่งราชบุตร" data-url="http://183.88.214.137:1935/livecctv/cctvp2c225.stream/playlist.m3u8">
+            <i class="fas fa-vial"></i>โต้รุ่งราชบุตร
+          </button>
+          <button class="channel-btn" data-name="สนามบินดอนเมือง" data-url="http://180.180.242.210:1200/DMT/1ANOP_CSV02.stream/playlist.m3u8">
+            <i class="fas fa-vial"></i>สนามบินดอนเมือง
+          </button>
          <button class="channel-btn" data-name="Test Stream" data-url="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8">
             <i class="fas fa-vial"></i> Test Stream (HLS)
           </button>
+          <!-- Imported channels will be added here -->
         </div>
       </div>
+    </div>
+    
+    <!-- M3U Import Modal -->
+    <div class="m3u-modal" id="m3uModal">
+      <div class="m3u-modal-content">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <h2 class="modal-title"><i class="fas fa-file-import"></i> Import M3U Playlist</h2>
+        
+        <div class="import-type-toggle">
+          <div class="toggle-btn active" id="fileToggle">File Upload</div>
+          <div class="toggle-btn" id="urlToggle">URL Import</div>
+        </div>
+        
+        <div id="fileImportSection">
+          <div class="file-upload-area" id="fileDropArea">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Drag & Drop your M3U file here</p>
+            <p>or</p>
+            <button class="import-btn" id="selectFileBtn">Select File</button>
+            <div class="file-name" id="fileName">No file selected</div>
+          </div>
+        </div>
+        
+        <div id="urlImportSection" style="display:none;">
+          <div class="url-input-container">
+            <label for="m3uUrl">Enter M3U URL:</label>
+            <input type="text" id="m3uUrl" class="url-input" placeholder="https://example.com/playlist.m3u">
+          </div>
+        </div>
+        
+        <div class="import-actions">
+          <button class="action-btn import-action" id="importActionBtn">
+            <i class="fas fa-upload"></i> Import Channels
+          </button>
+          <button class="action-btn cancel-action" id="cancelActionBtn">
+            <i class="fas fa-times"></i> Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+      <i class="fas fa-check-circle"></i>
+      <span id="toastMessage">Channels imported successfully!</span>
     </div>
     
     <div class="info-section">
@@ -457,12 +818,13 @@
           <li>For HD channels, 5Mbps+ connection recommended</li>
           <li>Close other bandwidth-intensive applications</li>
           <li>Use the reload button if playback stalls</li>
+          <li>Try different themes to match your mood!</li>
         </ul>
       </div>
     </div>
     
     <div class="footer">
-      <p>© 2023 Thai TV Player | Made with <i class="fas fa-heart" style="color:#da1b60;"></i> for Thai TV enthusiasts</p>
+      <p>© 2025 HS8TV Player | Made with <i class="fas fa-heart" style="color:var(--secondary-color);"></i> for Thai TV enthusiasts</p>
       <p><i class="fas fa-exclamation-circle"></i> For educational purposes only | Stream availability may vary by region</p>
     </div>
   </div>
@@ -613,6 +975,339 @@
       // Initialize the player with test stream
       const testBtn = document.querySelector('.channel-btn[data-name="Test Stream"]');
       testBtn.click();
+      
+      // M3U Import Feature
+      const importM3UBtn = document.getElementById('importM3UBtn');
+      const m3uModal = document.getElementById('m3uModal');
+      const closeModal = document.getElementById('closeModal');
+      const fileDropArea = document.getElementById('fileDropArea');
+      const selectFileBtn = document.getElementById('selectFileBtn');
+      const fileInput = document.createElement('input');
+      fileInput.type = 'file';
+      fileInput.accept = '.m3u,.m3u8';
+      fileInput.className = 'file-input';
+      document.body.appendChild(fileInput);
+      
+      const fileName = document.getElementById('fileName');
+      const importActionBtn = document.getElementById('importActionBtn');
+      const cancelActionBtn = document.getElementById('cancelActionBtn');
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+      const clearImportedBtn = document.getElementById('clearImportedBtn');
+      const channelList = document.querySelector('.channel-list');
+      const m3uUrlInput = document.getElementById('m3uUrl');
+      const fileToggle = document.getElementById('fileToggle');
+      const urlToggle = document.getElementById('urlToggle');
+      const fileImportSection = document.getElementById('fileImportSection');
+      const urlImportSection = document.getElementById('urlImportSection');
+      
+      let selectedFile = null;
+      let importType = 'file';
+      
+      // Toggle import type
+      fileToggle.addEventListener('click', () => {
+        fileToggle.classList.add('active');
+        urlToggle.classList.remove('active');
+        fileImportSection.style.display = 'block';
+        urlImportSection.style.display = 'none';
+        importType = 'file';
+      });
+      
+      urlToggle.addEventListener('click', () => {
+        urlToggle.classList.add('active');
+        fileToggle.classList.remove('active');
+        urlImportSection.style.display = 'block';
+        fileImportSection.style.display = 'none';
+        importType = 'url';
+      });
+      
+      // Open modal
+      importM3UBtn.addEventListener('click', () => {
+        m3uModal.style.display = 'flex';
+      });
+      
+      // Close modal
+      closeModal.addEventListener('click', closeImportModal);
+      cancelActionBtn.addEventListener('click', closeImportModal);
+      
+      // Handle file selection via button
+      selectFileBtn.addEventListener('click', () => {
+        fileInput.click();
+      });
+      
+      // Handle file input change
+      fileInput.addEventListener('change', (e) => {
+        if (e.target.files.length > 0) {
+          selectedFile = e.target.files[0];
+          fileName.textContent = selectedFile.name;
+        }
+      });
+      
+      // Handle drag and drop
+      fileDropArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        fileDropArea.style.borderColor = 'var(--primary-color)';
+        fileDropArea.style.background = 'rgba(0, 0, 0, 0.4)';
+      });
+      
+      fileDropArea.addEventListener('dragleave', () => {
+        fileDropArea.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+        fileDropArea.style.background = 'rgba(0, 0, 0, 0.2)';
+      });
+      
+      fileDropArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        fileDropArea.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+        fileDropArea.style.background = 'rgba(0, 0, 0, 0.2)';
+        
+        if (e.dataTransfer.files.length > 0) {
+          const file = e.dataTransfer.files[0];
+          if (file.name.endsWith('.m3u') || file.name.endsWith('.m3u8')) {
+            selectedFile = file;
+            fileName.textContent = file.name;
+          } else {
+            showToast('Please select a valid M3U/M3U8 file', 'error');
+          }
+        }
+      });
+      
+      // Import action
+      importActionBtn.addEventListener('click', async () => {
+        if (importType === 'file' && !selectedFile) {
+          showToast('Please select a file first', 'error');
+          return;
+        }
+        
+        if (importType === 'url' && !m3uUrlInput.value.trim()) {
+          showToast('Please enter a valid URL', 'error');
+          return;
+        }
+        
+        try {
+          let content = '';
+          
+          if (importType === 'file') {
+            content = await readFileAsText(selectedFile);
+          } else {
+            // Fetch M3U content from URL
+            const response = await fetch(m3uUrlInput.value.trim());
+            if (!response.ok) {
+              throw new Error(`Failed to fetch M3U: ${response.status} ${response.statusText}`);
+            }
+            content = await response.text();
+          }
+          
+          const channels = parseM3U(content);
+          
+          if (channels.length === 0) {
+            showToast('No valid channels found in M3U file', 'error');
+            return;
+          }
+          
+          // Add imported channels to the list
+          addImportedChannels(channels);
+          
+          showToast(`${channels.length} channels imported successfully!`, 'success');
+          closeImportModal();
+        } catch (error) {
+          console.error('Error importing M3U:', error);
+          showToast(`Error: ${error.message}`, 'error');
+        }
+      });
+      
+      // Clear imported channels
+      clearImportedBtn.addEventListener('click', () => {
+        const importedChannels = document.querySelectorAll('.imported-channel');
+        if (importedChannels.length > 0) {
+          importedChannels.forEach(channel => channel.remove());
+          showToast('Imported channels cleared', 'success');
+        } else {
+          showToast('No imported channels to clear', 'error');
+        }
+      });
+      
+      function readFileAsText(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = (e) => resolve(e.target.result);
+          reader.onerror = (e) => reject(e.target.error);
+          reader.readAsText(file);
+        });
+      }
+      
+      function closeImportModal() {
+        m3uModal.style.display = 'none';
+        selectedFile = null;
+        fileName.textContent = 'No file selected';
+        fileInput.value = '';
+        m3uUrlInput.value = '';
+      }
+      
+      function parseM3U(content) {
+        const channels = [];
+        const lines = content.split('\n');
+        let currentChannel = null;
+        
+        for (let line of lines) {
+          line = line.trim();
+          
+          // Skip empty lines and comments
+          if (line === '' || line.startsWith('#EXTM3U')) continue;
+          
+          if (line.startsWith('#EXTINF:')) {
+            // Extract channel name and properties
+            const extinf = line.substring(8).split(',');
+            const props = {};
+            
+            // Extract attributes if present
+            const attrString = extinf[0];
+            const attrs = attrString.match(/([a-zA-Z\-]+)="([^"]+)"/g) || [];
+            attrs.forEach(attr => {
+              const [key, value] = attr.split('=');
+              props[key] = value.replace(/"/g, '');
+            });
+            
+            // Channel name is the last part
+            const channelName = extinf.slice(1).join(',').trim();
+            
+            currentChannel = {
+              name: channelName,
+              props: props
+            };
+          } else if ((line.startsWith('http') || line.startsWith('rtmp') || line.startsWith('rtsp')) && currentChannel) {
+            // Extract stream URL
+            currentChannel.url = line.trim();
+            channels.push(currentChannel);
+            currentChannel = null;
+          }
+        }
+        
+        return channels;
+      }
+      
+      function addImportedChannels(channels) {
+        // Clear existing imported channels
+        const existingImported = document.querySelectorAll('.imported-channel');
+        existingImported.forEach(el => el.remove());
+        
+        // Add new channels
+        channels.forEach(channel => {
+          const btn = document.createElement('button');
+          btn.className = 'channel-btn imported-channel';
+          btn.dataset.name = channel.name;
+          btn.dataset.url = channel.url;
+          
+          btn.innerHTML = `
+            <i class="fas fa-cloud-download-alt"></i> ${channel.name}
+          `;
+          
+          // Add click handler
+          btn.addEventListener('click', function() {
+            document.querySelectorAll('.channel-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            currentChannel.textContent = channel.name;
+            loadStream(channel.url, channel.name);
+          });
+          
+          // Insert after the last default channel
+          channelList.appendChild(btn);
+        });
+      }
+      
+      function showToast(message, type = 'success') {
+        const icon = type === 'success' ? 'fa-check-circle' : 
+                   type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
+        
+        toast.innerHTML = `
+          <i class="fas ${icon}"></i>
+          <span>${message}</span>
+        `;
+        
+        toast.className = `toast show ${type}`;
+        
+        setTimeout(() => {
+          toast.className = 'toast';
+        }, 3000);
+      }
+      
+      // Theme selector functionality
+      const themeBtns = document.querySelectorAll('.theme-btn');
+      
+      themeBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const theme = this.dataset.theme;
+          applyTheme(theme);
+          
+          // Update active state
+          themeBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+      
+      function applyTheme(theme) {
+        // Reset to default theme first
+        document.body.style.setProperty('--primary-color', '#ff8a00');
+        document.body.style.setProperty('--secondary-color', '#da1b60');
+        document.body.style.setProperty('--background-gradient', 'linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c)');
+        document.body.style.setProperty('--card-bg', 'rgba(0, 0, 0, 0.3)');
+        document.body.style.setProperty('--card-border', 'rgba(255, 255, 255, 0.1)');
+        document.body.style.setProperty('--text-color', 'white');
+        
+        // Apply selected theme
+        switch(theme) {
+          case 'ocean':
+            document.body.style.setProperty('--primary-color', '#00c3ff');
+            document.body.style.setProperty('--secondary-color', '#0077ff');
+            document.body.style.setProperty('--background-gradient', 'linear-gradient(135deg, #000428, #004e92)');
+            break;
+          case 'forest':
+            document.body.style.setProperty('--primary-color', '#00b09b');
+            document.body.style.setProperty('--secondary-color', '#96c93d');
+            document.body.style.setProperty('--background-gradient', 'linear-gradient(135deg, #134E5E, #71B280)');
+            break;
+          case 'sunset':
+            document.body.style.setProperty('--primary-color', '#ff7e5f');
+            document.body.style.setProperty('--secondary-color', '#feb47b');
+            document.body.style.setProperty('--background-gradient', 'linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b)');
+            break;
+          case 'purple':
+            document.body.style.setProperty('--primary-color', '#8E2DE2');
+            document.body.style.setProperty('--secondary-color', '#4A00E0');
+            document.body.style.setProperty('--background-gradient', 'linear-gradient(135deg, #1a1a2e, #16213e, #0f3460)');
+            break;
+          case 'gold':
+            document.body.style.setProperty('--primary-color', '#FFD700');
+            document.body.style.setProperty('--secondary-color', '#FFA500');
+            document.body.style.setProperty('--background-gradient', 'linear-gradient(135deg, #2c3e50, #4a235a, #6c3483)');
+            break;
+          default:
+            // Default theme is already set
+            break;
+        }
+        
+        // Apply color to player controls
+        const playerBigPlayButton = document.querySelector('.vjs-big-play-button');
+        if (playerBigPlayButton) {
+          playerBigPlayButton.style.background = `rgba(${hexToRgb(document.body.style.getPropertyValue('--secondary-color'))}, 0.7) !important`;
+        }
+      }
+      
+      // Helper function to convert hex to rgb
+      function hexToRgb(hex) {
+        // Default to secondary color if not set
+        hex = hex || '#da1b60';
+        
+        // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+        const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+        hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+          return r + r + g + g + b + b;
+        });
+        
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? 
+          `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` 
+          : '218, 27, 96';
+      }
     });
   </script>
 </body>
